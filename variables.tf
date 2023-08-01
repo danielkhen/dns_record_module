@@ -10,7 +10,7 @@ variable "resource_group_name" {
 
 variable "vnet_links" {
   description = "(Optional) A list of virtual networks to link with the dns zone, only needed when dns zone is private."
-  type        = list(object({
+  type = list(object({
     vnet_id = string
     name    = string
   }))
@@ -19,7 +19,7 @@ variable "vnet_links" {
 
 variable "a_records" {
   description = "(Optional) The a records to add to the private dns zone."
-  type        = list(object({
+  type = list(object({
     name    = string
     ttl     = number
     records = list(string)
@@ -29,7 +29,7 @@ variable "a_records" {
 
 variable "aaaa_records" {
   description = "(Optional) The aaaa records to add to the private dns zone."
-  type        = list(object({
+  type = list(object({
     name    = string
     ttl     = number
     records = list(string)

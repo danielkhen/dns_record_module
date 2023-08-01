@@ -25,7 +25,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "vnet_links" {
 }
 
 locals {
-  a_records_map = {for record in var.a_records: record.name => record}
+  a_records_map = { for record in var.a_records : record.name => record }
 }
 
 resource "azurerm_private_dns_a_record" "records" {
@@ -43,7 +43,7 @@ resource "azurerm_private_dns_a_record" "records" {
 }
 
 locals {
-  aaaa_records_map = {for record in var.aaaa_records: record.name => record}
+  aaaa_records_map = { for record in var.aaaa_records : record.name => record }
 }
 
 resource "azurerm_private_dns_aaaa_record" "records" {
