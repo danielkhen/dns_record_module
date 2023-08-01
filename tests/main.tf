@@ -29,17 +29,18 @@ resource "azurerm_public_ip" "test_ip" {
 }
 
 locals {
-  dns_record_name = "dns-record"
-  dns_name        = "dns-test.com"
-  dns_record_type = "a"
+  dns_name = "dns-record.com"
+  dns_a_records = [{
+    name    = "test"
+    ttl     = 300
+    records = ["10.0.0.10", "172.0.0.172"]
+  }]
 }
 
-module "dns_record" {
+module "private_dns_zone" {
   source = "../"
 
-  name                = local.dns_record_name
+  name                = local.dns_name
   resource_group_name = azurerm_resource_group.test_rg.name
-  dns_name            = local.dns_name
-  record_type         = local.dns_record_type
-  records             = [azurerm_public_ip.test_ip.ip_address]
+  a_records           = local.dns_a_records
 }

@@ -47,7 +47,7 @@ locals {
 }
 
 resource "azurerm_private_dns_aaaa_record" "records" {
-  for_each = local.a_records_map
+  for_each = local.aaaa_records_map
 
   name                = each.value.name
   resource_group_name = var.resource_group_name
