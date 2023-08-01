@@ -32,7 +32,7 @@ resource "azurerm_private_dns_a_record" "records" {
   for_each = local.a_records_map
 
   name                = each.value.name
-  resource_group_name = each.value.resource_group_name
+  resource_group_name = var.resource_group_name
   zone_name           = azurerm_private_dns_zone.dns_zone.name
   ttl                 = each.value.ttl
   records             = each.value.records
@@ -50,7 +50,7 @@ resource "azurerm_private_dns_aaaa_record" "records" {
   for_each = local.a_records_map
 
   name                = each.value.name
-  resource_group_name = each.value.resource_group_name
+  resource_group_name = var.resource_group_name
   zone_name           = azurerm_private_dns_zone.dns_zone.name
   ttl                 = each.value.ttl
   records             = each.value.records
