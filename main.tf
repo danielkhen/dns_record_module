@@ -43,7 +43,7 @@ resource "azurerm_private_dns_a_record" "records" {
 }
 
 locals {
-  aaaa_records_map = { for record in var.aaaa_records : record.name => record }
+  aaaa_records_map = { for record in var.aaaa_records : record.name => record } #TODO test me
 }
 
 resource "azurerm_private_dns_aaaa_record" "records" {
