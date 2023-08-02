@@ -30,11 +30,20 @@ resource "azurerm_public_ip" "test_ip" {
 
 locals {
   dns_name = "dns-record.com"
-  dns_a_records = [{
-    name    = "test"
-    ttl     = 300
-    records = ["10.0.0.10", "172.0.0.172"]
-  }]
+  dns_a_records = [
+    {
+      name    = "a_test"
+      ttl     = 300
+      records = ["10.0.0.10", "172.0.0.172"]
+    }
+  ]
+  dns_aaaa_records = [
+    {
+      name    = "aaaa_test"
+      ttl     = 300
+      records = ["FD00::1/7", "FD00::45:AA:1/7"]
+    }
+  ]
 }
 
 module "private_dns_zone" {
