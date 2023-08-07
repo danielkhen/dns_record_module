@@ -52,4 +52,5 @@ module "private_dns_zone" {
   name                = local.dns_name
   resource_group_name = azurerm_resource_group.test_rg.name
   a_records           = local.dns_a_records
+  aaaa_records        = local.dns_aaaa_records
 }
